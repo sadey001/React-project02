@@ -1,0 +1,46 @@
+name : Main Workflow
+on: [push ,workflow_dispatch]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v3
+      - name: setup node version 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: install node module
+        run: npm ci
+      - name: lint the app
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v3
+      - name: setup node version 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: install node module
+        run: npm ci
+      - name: Build the app
+        run: npm run test
+  build:
+    needs: [lint ,test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v3
+      - name: setup node version 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: install node module
+        run: npm ci
+      - name: Build the app
+        run: npm run build
+
+
