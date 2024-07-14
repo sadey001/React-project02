@@ -57,9 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Donwoload artifact
-        uses: download-artifact@v4
-        with:
-          path: owner/repo@ref
+        uses: actions/download-artifact@v4
       - name: Show strcture
         run: ls
       - name: Deplyments
