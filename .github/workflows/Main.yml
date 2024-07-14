@@ -58,6 +58,8 @@ jobs:
     steps:
       - name: Donwoload artifact
         uses: download-artifact@v4
+        with:
+          path: owner/repo@ref
       - name: Show strcture
         run: ls
       - name: Deplyments
