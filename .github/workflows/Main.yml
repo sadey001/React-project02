@@ -44,8 +44,11 @@ jobs:
         run: npm run build
       - name: upload artifact
         uses: actions/upload-artifact@v3
+        with:
           name: my-artifact
-          path: dist
+          path: |
+            dist
+            vite.config.js
       - name: Infromation
         run: echo "Deplyments completed"
 
