@@ -45,9 +45,7 @@ jobs:
       - name: upload artifact
         uses: actions/upload-artifact@v3
           name: my-artifact
-          path: |
-            dist
-            vite.config.js
+          path: dist
       - name: Infromation
         run: echo "Deplyments completed"
 
