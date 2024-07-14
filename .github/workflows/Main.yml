@@ -52,16 +52,7 @@ jobs:
       - name: Infromation
         run: echo "Deplyments completed"
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Donwoload artifact
-        uses: download-artifact@v3
-      - name: Show strcture
-        run: ls
-      - name: Deplyments
-        run: echo "Deploying ..."
+
 
 
 
