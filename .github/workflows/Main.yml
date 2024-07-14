@@ -50,9 +50,18 @@ jobs:
             dist
             vite.config.js
       - name: Infromation
-        run: echo "Deplyments completed"
+        run: echo "Build completed"
 
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Donwoload artifact
+        uses: download-artifact@v4
+      - name: Show strcture
+        run: ls
+      - name: Deplyments
+        run: echo "Deploying ..."
 
 
 
