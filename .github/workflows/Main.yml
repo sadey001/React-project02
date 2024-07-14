@@ -40,8 +40,10 @@ jobs:
           node-version: 20
       - name: install node module
         run: npm ci
+      - run: ls
       - name: Build the app
         run: npm run build
+      - run : ls
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
