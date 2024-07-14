@@ -58,6 +58,7 @@ jobs:
     steps:
       - name: Donwoload artifact
         uses: download-artifact@v3
+        with:
           name: my-artifact
           path: artifacts
       - name: Deplyments
