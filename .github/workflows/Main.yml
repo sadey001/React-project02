@@ -29,9 +29,7 @@ jobs:
       - name: Build the app
         run: npm run test
   build:
-    needs: |
-      lint
-      test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: get the code
@@ -44,6 +42,25 @@ jobs:
         run: npm ci
       - name: Build the app
         run: npm run build
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+          name: my-artifact
+          path: |
+            dist
+            vite.config.js
+      - name: Infromation
+        run: echo "Deplyments completed"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Donwoload artifact
+        uses: download-artifact@v3
+          name: my-artifact
+          path: artifacts
+      - name: Deplyments
+        run: echo "Deploying ..."
 
 
 
