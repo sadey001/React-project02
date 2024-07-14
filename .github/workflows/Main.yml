@@ -58,9 +58,8 @@ jobs:
     steps:
       - name: Donwoload artifact
         uses: download-artifact@v3
-        with:
-          name: my-artifact
-          path: artifacts
+      - name: Show strcture
+        run: ls
       - name: Deplyments
         run: echo "Deploying ..."
 
